@@ -60,26 +60,23 @@ const copyFromWindow = require('copyFromWindow');
 const callInWindow = require('callInWindow');
 const getType = require('getType');
 
-const payload = {};
+const payload = {
+  remove: null
+};
+
 if (getType(data.remove) === 'array') {
-  if (data.remove) {
-    payload.remove = data.remove.map((cartObj) => {
-      return {
-        id: cartObj[data.cartObjectIdVarName],
-        sku: cartObj[data.cartObjectSkuVarName]
-      };
-    });
-  }
-} else if (getType(data.remove) === 'object') {
-  if (data.remove) {
-    payload.remove = {
-      id: data.remove[data.cartObjectIdVarName],
-      sku: data.remove[data.cartObjectSkuVarName]
+  payload.remove = data.remove.map((cartObj) => {
+    return {
+      id: cartObj[data.cartObjectIdVarName],
+      sku: cartObj[data.cartObjectSkuVarName]
     };
-  }
+  });
+} else if (getType(data.remove) === 'object') {
+  payload.remove = {
+    id: data.remove[data.cartObjectIdVarName],
+    sku: data.remove[data.cartObjectSkuVarName]
+  };
 }
-
-
 
 const eventTopic = copyFromWindow('_MetricalAbandonCart.EventBus.constants.topics.ACTION_REMOVE_FROM_CART');
 const eventPublish = () => callInWindow('_MetricalAbandonCart.EventBus.publish', eventTopic, payload);
