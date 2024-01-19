@@ -35,21 +35,21 @@ ___TEMPLATE_PARAMETERS___
     "name": "remove",
     "displayName": "Item(s) Removed",
     "simpleValueType": true,
-    "help": "GTM variable representing the item removed or list of items removed.\nIf only one item is being removed, the variable\u0027s value should be an object that includes values representing the following keys: id, sku. Enter the names of the keys representing them in the fields below.\nIf multiple items are being removed at once, the variable\u0027s value should be an array of objects, with each object including values representing the following keys: id, sku. Enter the names of the keys representing them in the fields below."
+    "help": "Variable representing the item or list of items removed.\nIf there will always be only one item removed at a time via this action, then the variable\u0027s value should be an object representing the item removed that includes values that correspond to the item\u0027s ID and SKU.\nIf there may be multiple items removed at a time, then the variable\u0027s value should be an array of objects, with each object including the item\u0027s ID and SKU.\nRegardless of whether one or multiple items may be added at a time, enter the names of the keys representing the values just mentioned in the fields below."
   },
   {
     "type": "TEXT",
     "name": "cartObjectIdVarName",
     "displayName": "Item Object ID Key Name",
     "simpleValueType": true,
-    "help": "Name of the key on each item object representing the item\u0027s ID. Should just be a name, not a GTM variable. Variable\u0027s value should be a string."
+    "help": "Key that holds the item\u0027s ID on each item object being removed. The key\u0027s corresponding value (the ID) should be a string or number."
   },
   {
     "type": "TEXT",
     "name": "cartObjectSkuVarName",
     "displayName": "Cart Object SKU Variable Name",
     "simpleValueType": true,
-    "help": "Name of the key on each item object representing the item\u0027s quantity. Should just be a name, not a GTM variable. Variable\u0027s value should be a number."
+    "help": "Key that holds the item\u0027s SKU on each item object being removed. The key\u0027s corresponding value (the SKU) should be a string."
   }
 ]
 
