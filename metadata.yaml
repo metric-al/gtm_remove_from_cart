@@ -1,6 +1,8 @@
 homepage: "https://metric.al/"
 documentation: "https://github.com/metric-al/gtm_metrical_library#readme"
 versions:
+  - sha: 303acab1d42535b0251345a52766ba55444e7d1c
+    changeNotes: Added quantity to payload.
   - sha: f369e7663eac08ea6a7a32fc2bfb5691c19c34d6
     changeNotes: Updated field descriptions.
   - sha: 51ce3295b70ee374b9080a2cf1c253b6908fb56b
