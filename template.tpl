@@ -47,9 +47,16 @@ ___TEMPLATE_PARAMETERS___
   {
     "type": "TEXT",
     "name": "cartObjectSkuVarName",
-    "displayName": "Cart Object SKU Variable Name",
+    "displayName": "Item Object SKU Key Name",
     "simpleValueType": true,
     "help": "Key that holds the item\u0027s SKU on each item object being removed. The key\u0027s corresponding value (the SKU) should be a string."
+  },
+  {
+    "type": "TEXT",
+    "name": "cartObjectQuantityVarName",
+    "displayName": "Item Object Quantity Key Name",
+    "simpleValueType": true,
+    "help": "Used if editing the quantity of an item rather than removing the entire item.\nKey that holds the item\u0027s quantity on each item object being removed. The key\u0027s corresponding value (the quantity) should be a string."
   }
 ]
 
@@ -68,13 +75,15 @@ if (getType(data.remove) === 'array') {
   payload.remove = data.remove.map((cartObj) => {
     return {
       id: cartObj[data.cartObjectIdVarName],
-      sku: cartObj[data.cartObjectSkuVarName]
+      sku: cartObj[data.cartObjectSkuVarName],
+      quantity: cartObj[data.cartObjectQuantityVarName]
     };
   });
 } else if (getType(data.remove) === 'object') {
   payload.remove = {
     id: data.remove[data.cartObjectIdVarName],
-    sku: data.remove[data.cartObjectSkuVarName]
+    sku: data.remove[data.cartObjectSkuVarName],
+    quantity: data.remove[data.cartObjectQuantityVarName]
   };
 }
 
